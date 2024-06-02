@@ -1,4 +1,4 @@
-package br.edu.utfpr.cp.espjava.crudcidades2.visao;
+package br.edu.utfpr.cp.espjava.crudcidades2.cidade;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -22,5 +22,18 @@ public final class Cidade {
 
     public String getEstado() {
         return estado;
+    }
+
+    public CidadeEntidade clonar(){
+        var cidadeEntidade = new CidadeEntidade();
+
+        cidadeEntidade.setNome(this.getNome());
+        cidadeEntidade.setEstado(this.getEstado());
+
+        return cidadeEntidade;
+    }
+
+    public Cidade clonar(CidadeEntidade cidade){
+        return new Cidade(cidade.getNome(), cidade.getEstado());
     }
 }
