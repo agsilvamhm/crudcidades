@@ -8,6 +8,7 @@
 <body>
 <div>
     <nav class="navbar navbar-expand-sm bg-dark">
+       <span class="navbar-brand text-white">Usuário</span>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a href="/logout" class="nav-link btn btn-secondary">

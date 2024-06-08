@@ -33,7 +33,7 @@ public final class Cidade {
         return cidadeEntidade;
     }
 
-    public Cidade clonar(CidadeEntidade cidade){
+    public static Cidade clonar(CidadeEntidade cidade){
         return new Cidade(cidade.getNome(), cidade.getEstado());
     }
 }
