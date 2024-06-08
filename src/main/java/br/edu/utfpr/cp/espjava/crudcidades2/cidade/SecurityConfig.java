@@ -1,7 +1,9 @@
 package br.edu.utfpr.cp.espjava.crudcidades2.cidade;
 
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -15,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    @Bean
+  /*  @Bean
     public InMemoryUserDetailsManager configure() throws Exception{
         UserDetails beto = User.withUsername("beto")
                 .password(cifrador().encode("test123"))
@@ -28,7 +30,7 @@ public class SecurityConfig {
 
         return new InMemoryUserDetailsManager(beto, ana);
     }
-
+*/
     @Bean
     public PasswordEncoder cifrador(){
         return new BCryptPasswordEncoder();
@@ -49,5 +51,10 @@ public class SecurityConfig {
                 .logout().permitAll()
                 .and()
                 .build();
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void printSenhas(){
+        System.out.println(this.cifrador().encode("teste123"));
     }
 }
