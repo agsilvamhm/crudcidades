@@ -43,7 +43,10 @@ public class SecurityConfig {
                 .requestMatchers("/criar","/excluir","/alterar","/preparaAlterar").hasRole("admin")
                 .anyRequest().denyAll()
                 .and()
-                .formLogin().permitAll()
+                .formLogin()
+                .loginPage("/login.html").permitAll()
+                .and()
+                .logout().permitAll()
                 .and()
                 .build();
     }
